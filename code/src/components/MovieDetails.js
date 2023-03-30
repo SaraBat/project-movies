@@ -14,26 +14,35 @@ export const MovieDetails = () => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=37960b018b2292cd4182bc4096fb83c8&language=en-US`)
       .then((response) => response.json())
       .then((data) => setDetails(data))
-    console.log(details)
-  }, [id, details]);
+  }, [id]);
 
   return (
-    <div className="MovieDetailsRender" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${details.backdrop_path})` }}>
-      <button className="backButton" type="button" onClick={onGoToNotFoundButtonClick}> Back </button>
+    <div
+      className="MovieDetailsRender"
+      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${details.backdrop_path})` }}>
+      <div className="button-container">
+        <button className="backButton" type="button" onClick={onGoToNotFoundButtonClick}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M10 20A10 10 0 1 0 0 10a10 10 0 0 0 10 10zm1.289-15.7 1.422 1.4-4.3 4.344 4.289 4.245-1.4 1.422-5.714-5.648z" fill="#fff" /></svg>
+          Back
+        </button>
+      </div>
       <div className="movieAndInfo">
         <div className="movieImage">
           <img src={`https://image.tmdb.org/t/p/w300${details.poster_path}`} alt={details.title} />
         </div>
         <div className="MovieTextBlock">
           <div className="movieInfo">
-            <h1>{details.title}</h1>
-            <h2>⭐  <span>{Math.round(details.vote_average * 10) / 10}</span></h2>
+            <div className="title-and-rating">
+              <h1>{details.title}</h1>
+              <h2>⭐  <span>{Math.round(details.vote_average * 10) / 10}</span></h2>
+            </div>
           </div>
           <div className="MovieSummary">
             <p>{details.overview}</p>
           </div>
         </div>
       </div>
+      <div className="shadow" />
     </div>
   )
 }
