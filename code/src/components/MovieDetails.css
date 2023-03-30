@@ -65,6 +65,10 @@
     flex-direction: row;
     gap: 20px;
   }
+
+  p {
+    font-size: 17px;
+  }
   
   h1,
   p {
@@ -73,12 +77,12 @@
   }
   
   h1 {
-    font-size: 1.5em;
+    font-size: 25px;
     font-weight: bold;
   }
   
   h2 {
-    font-size: 1.5em;
+    font-size: 25px;
   }
   
   span {
@@ -103,16 +107,13 @@
     opacity: 1;
   }
   
-  /* TABLET & DESKTOP (min-width: 600px) */
-  @media (min-width: 600px) {
+  /* MEDIA QUERY FOR TABLET*/
+  @media (min-width: 668px){
     .movieAndInfo {
       display: flex;
       flex-direction: row;
-      padding: 5%;
+      padding: 10%;
     }
-  
-    .MovieSummary {
-      margin-right: 50%;
-    }
+
   }
   
