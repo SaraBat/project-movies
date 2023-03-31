@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import NotFound from './NotFound';
 import './MovieDetails.css';
 
 export const MovieDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState({});
   const navigate = useNavigate();
-  const [error, setError] = useState(false)
   const onGoToNotFoundButtonClick = () => {
     navigate('/');
   }
@@ -15,19 +13,8 @@ export const MovieDetails = () => {
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=37960b018b2292cd4182bc4096fb83c8&language=en-US`)
       .then((response) => response.json())
-      .then((data) => {
-        if (data.id) {
-          setDetails(data)
-        } else {
-          setError(true);
-        }
-      })
-      .catch(() => setError(true))
+      .then((data) => setDetails(data))
   }, [id]);
-
-  if (error) {
-    return <NotFound />
-  }
 
   return (
     <div
@@ -47,6 +34,7 @@ export const MovieDetails = () => {
           <div className="movieInfo">
             <div className="title-and-rating">
               <h1>{details.title}</h1>
+
               <h2>⭐<span>{Math.round(details.vote_average * 10) / 10}</span></h2>
             </div>
           </div>
