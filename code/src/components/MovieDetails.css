@@ -39,7 +39,7 @@
   .movieAndInfo {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
   }
   
   .title-and-rating {
@@ -58,6 +58,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 15px;
+    max-width: 400px;
   }
   
   .movieInfo {
@@ -112,8 +113,20 @@
     .movieAndInfo {
       display: flex;
       flex-direction: row;
+      align-items: flex-end;
       padding: 10%;
     }
 
+  }
+  
+   /* MEDIA QUERY FOR DESKTIO*/
+   @media (min-width: 1024px){
+    .movieAndInfo {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      padding: 5%;
+    }
+ 
   }
   
